@@ -4,6 +4,9 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
+
+import { HdService } from './services/hd.service';
+
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { TableHomeComponent } from './components/table-home/table-home.component';
@@ -29,7 +32,7 @@ import { FooterComponent } from './components/footer/footer.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [HdService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

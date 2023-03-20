@@ -1,14 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { 
   FormGroup,
   FormBuilder,
   Validators 
 } from '@angular/forms';
 
+import { HdService } from '../../services/hd.service';
 import moment from 'moment';
-
-const urlDefault = 'http://localhost:3003/publicacao';
 
 @Component({
   selector: 'app-create-hd',
@@ -20,7 +18,7 @@ export class CreateHdComponent implements OnInit {
 
   myForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private http: HttpClient) { }
+  constructor(private fb: FormBuilder, private serviceHd: HdService) { }
 
   get hdTitle() {
     return this.myForm.get("hdTitle");
@@ -57,7 +55,7 @@ export class CreateHdComponent implements OnInit {
   }
 
   onSubmit() {
-    this.http.post<any>(urlDefault, this.myForm.value).subscribe(data => {
+    this.serviceHd.getHds().subscribe(data => {
       console.log(data);
     });
   }
