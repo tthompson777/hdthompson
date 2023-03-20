@@ -1,0 +1,41 @@
+<div class="container">
+  <h1 class="mt-5">Abrir chamado</h1>
+  <form class="row g-3" [formGroup]="myForm">
+    <div class="col-md-12">
+      <label for="hdTitle" class="form-label">Título</label>
+      <input type="text" class="form-control" id="hdTitle" formControlName="hdTitle">
+      <span *ngIf="hdTitle.invalid" [ngClass] = "'error'"> Name required with max 15 character. </span>
+    </div>
+    <div class="col-md-4">
+      <label for="htType" class="form-label">Tipo</label>
+      <select id="htType" class="form-select" formControlName="htType">
+        <option selected>Escolha...</option>
+        <option>...</option>
+      </select>
+    </div>
+    <div class="col-md-4">
+      <label for="hdPriority" class="form-label">Prioridade</label>
+      <select id="hdPriority" class="form-select" formControlName="hdPriority">
+        <option selected>Escolha...</option>
+        <option>...</option>
+      </select>
+    </div>
+    <div class="col-4">
+      <label for="hdCreateDate" class="form-label">Criado em</label>
+      <input type="text" class="form-control" id="hdCreateDate" disabled formControlName="hdCreateDate">
+    </div>
+    <div class="col-12">
+      <label for="hdDescription" class="form-label">Descrição</label>
+      <textarea class="form-control" id="hdDescription" rows="3" formControlName="hdDescription"></textarea>
+    </div>
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary" (click)="onSubmit()">Abrir Chamado</button>
+    </div>
+  </form>
+  <div class="col-md-6">
+    <label>
+      <strong>myForm : JSON</strong>
+    </label>
+    <pre class="alert alert-dark">{{myForm.value | json}}</pre>
+  </div>
+</div>
