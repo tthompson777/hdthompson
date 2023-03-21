@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import Hd from '../../interfaces/hd';
+import { HdService } from '../../services/hd.service';
 
 @Component({
   selector: 'app-table-home',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TableHomeComponent implements OnInit {
 
-  constructor() { }
+  dataHds: Array<Hd> = []
 
-  ngOnInit() {
+  constructor(private serviceHd: HdService) {}
+
+  ngOnInit(): void {
+    this.serviceHd.getHds().subscribe((data: any) => {
+      this.dataHds = data
+      console.log(this.dataHds)
+    })
   }
 
 }

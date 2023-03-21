@@ -48,15 +48,16 @@ export class CreateHdComponent implements OnInit {
       hdCreateDate: [moment().format('DD/MM/YYY HH:mm'), [Validators.required]],
       hdDescription: ["", [Validators.required]],
     },
-    { 
+    {
       updateOn: 
       "blur" 
     });
   }
 
   onSubmit() {
-    this.serviceHd.getHds().subscribe(data => {
-      console.log(data);
+    const _form = this.myForm.value
+    this.serviceHd.postHds(_form).subscribe(data => {
+      console.log(data)
     });
   }
 

@@ -18,4 +18,8 @@ export class HdService {
     return this.http.get(baseUrl);
   }
 
+  postHds(body:any): Observable<any> {
+    return this.http.post(baseUrl, body);
+  }
+
 }

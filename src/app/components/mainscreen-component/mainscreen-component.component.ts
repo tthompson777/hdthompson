@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
 
-import { HdService } from '../../services/hd.service';
+import { HdService } from '../../services/hd.service'
+import Hd from '../../interfaces/hd'
 
 @Component({
   selector: 'app-mainscreen-component',
@@ -10,12 +11,15 @@ import { HdService } from '../../services/hd.service';
 
 export class MainscreenComponentComponent implements OnInit {
 
-  constructor(private serviceHd: HdService) { }
+  dataHds: Array<Hd> = []
 
-  ngOnInit() {
-    this.serviceHd.getHds().subscribe(data => {
-      console.log(data);
-    });
+  constructor(private serviceHd: HdService) {}
+
+  ngOnInit(): void {
+    this.serviceHd.getHds().subscribe((data: any) => {
+      this.dataHds = data
+      console.log(this.dataHds)
+    })
   }
 
 }

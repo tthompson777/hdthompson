@@ -1,19 +1,20 @@
-<table class="table table-striped table-hover">
-	<tbody>
-		<tr>
-			<th scope="row">1</th>
-			<td>Larry the Bird</td>
-			<td>@twitter</td>
-		</tr>
-		<tr>
-			<th scope="row">2</th>
-			<td>Larry the Bird</td>
-			<td>@twitter</td>
-		</tr>
-		<tr>
-			<th scope="row">3</th>
-			<td>Larry the Bird</td>
-			<td>@twitter</td>
-		</tr>
-	</tbody>
+<table class="table table-striped table-hover table-dark">
+  <thead>
+    <tr>
+      <th>Título</th>
+      <th>Tipo</th>
+      <th>Prioridade</th>
+      <th>Resumo</th>
+      <th>Criado em</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let dado of dataHds">
+      <td>{{ dado.hdTitle }}</td>
+      <td>{{ dado.htType }}</td>
+      <td>{{ dado.hdCreateDate }}</td>
+      <td>{{ dado.hdDescription }}</td>
+      <td>{{ dado.hdTitle }}</td>
+    </tr>
+  </tbody>
 </table>
