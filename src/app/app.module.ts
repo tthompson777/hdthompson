@@ -14,6 +14,7 @@ import { CreateHdComponent } from './components/create-hd/create-hd.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { MainscreenComponentComponent } from './components/mainscreen-component/mainscreen-component.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ModalEditComponent } from './components/modal-edit/modal-edit.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { FooterComponent } from './components/footer/footer.component';
     CreateHdComponent,
     NotFoundComponent,
     MainscreenComponentComponent,
-    FooterComponent
+    FooterComponent,
+    ModalEditComponent,
   ],
   imports: [
     BrowserModule,

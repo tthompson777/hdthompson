@@ -1,7 +1,9 @@
 export default interface Hd {
   _id?: string;
   hdTitle: string;
-  htType?: string;
+  hdType?: string;
+  hdStatus?: string;
+  hdPriority?: string;
   hdCreateDate?: string;
   hdDescription?: string;
 }

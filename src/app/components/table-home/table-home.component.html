@@ -1,20 +1,34 @@
-<table class="table table-striped table-hover table-dark">
-  <thead>
-    <tr>
-      <th>Título</th>
-      <th>Tipo</th>
-      <th>Prioridade</th>
-      <th>Resumo</th>
-      <th>Criado em</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let dado of dataHds">
-      <td>{{ dado.hdTitle }}</td>
-      <td>{{ dado.htType }}</td>
-      <td>{{ dado.hdCreateDate }}</td>
-      <td>{{ dado.hdDescription }}</td>
-      <td>{{ dado.hdTitle }}</td>
-    </tr>
-  </tbody>
-</table>
+<div class="container-table100">
+  <div class="wrap-table100">
+    <div class="table100 ver1 m-b-110">
+      <div class="table100-head">
+        <table>
+          <thead>
+            <tr class="row100 head">
+              <th class="cell100 column1">Título</th>
+              <th class="cell100 column2">Tipo</th>
+              <th class="cell100 column2">Situação</th>
+              <th class="cell100 column3">Prioridade</th>
+              <th class="cell100 column4">Criado em</th>
+              <th class="cell100 column5">Resumo</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+      <div class="table100-body js-pscroll ps ps--active-y">
+        <table>
+          <tbody>
+            <tr class="row100 body" *ngFor="let dado of dataHds">
+              <td class="cell100 column1">{{ dado.hdTitle }}</td>
+              <td class="cell100 column2">{{ dado.hdType }}</td>
+              <td class="cell100 column3">{{ dado.hdStatus }}</td>
+              <td class="cell100 column4">{{ dado.hdPriority }}</td>
+              <td class="cell100 column5">{{ dado.hdCreateDate }}</td>
+              <td class="cell100 column6">{{ dado.hdDescription }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

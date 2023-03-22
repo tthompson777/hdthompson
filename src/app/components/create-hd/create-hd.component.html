@@ -1,41 +1,93 @@
-<div class="container">
-  <h1 class="mt-5">Abrir chamado</h1>
-  <form class="row g-3" [formGroup]="myForm">
-    <div class="col-md-12">
-      <label for="hdTitle" class="form-label">Título</label>
-      <input type="text" class="form-control" id="hdTitle" formControlName="hdTitle">
-      <span *ngIf="hdTitle.invalid" [ngClass] = "'error'"> Name required with max 15 character. </span>
+<div class="d-lg-flex half">
+  <div class="bg order-1 order-md-2" style="background-image: url('images/bg_1.jpg');"></div>
+  <div class="contents order-2 order-md-1">
+
+    <div class="container">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-md-7 py-5">
+          <h3>Register</h3>
+          <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p>
+          <form [formGroup]="myForm">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group first">
+                  <label for="hdTitle">Título</label>
+                  <input 
+                    type="text" 
+                    class="form-control" 
+                    id="hdTitle" 
+                    formControlName="hdTitle"
+                  >
+                  <span *ngIf="hdTitle.invalid" [ngClass]="'error'"> Name required with max 15 character. </span>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group first">
+                  <label for="hdType">Tipo</label>
+                  <select 
+                    (change)="onChange($event.target.value)" 
+                    formControlName="hdType" 
+                    class="form-control"
+                  >
+                    <option *ngFor="let option of optionsHdType" [value]="option.value">{{option.label}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group first">
+                  <label for="hdPriority">Prioridade</label>
+                  <select 
+                    class="form-control"
+                    (change)="onChange($event.target.value)" 
+                    formControlName="hdPriority" 
+                  >
+                    <option *ngFor="let option of optionsHdPriority" [value]="option.value">{{option.label}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group first">
+                  <label for="hdCreateDate">Criado em</label>
+                  <input 
+                    type="text" 
+                    class="form-control" 
+                    id="hdCreateDate" 
+                    formControlName="hdCreateDate"
+                    disabled 
+                  >
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group first">
+                  <label for="hdStatus">Situação</label>
+                  <select 
+                    class="form-control"
+                    (change)="onChange($event.target.value)" 
+                    formControlName="hdStatus" 
+                  >
+                    <option *ngFor="let option of optionsHdStatus" [value]="option.value">{{option.label}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group first">
+                  <label for="hdDescription">Descrição</label>
+                  <textarea 
+                    class="form-control" 
+                    id="hdDescription"
+                    formControlName="hdDescription"
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+            <button type="submit" class="btn px-5 btn-primary" (click)="onSubmit()">Abrir Chamado</button>
+          </form>
+        </div>
+      </div>
     </div>
-    <div class="col-md-4">
-      <label for="htType" class="form-label">Tipo</label>
-      <select id="htType" class="form-select" formControlName="htType">
-        <option selected>Escolha...</option>
-        <option>...</option>
-      </select>
-    </div>
-    <div class="col-md-4">
-      <label for="hdPriority" class="form-label">Prioridade</label>
-      <select id="hdPriority" class="form-select" formControlName="hdPriority">
-        <option selected>Escolha...</option>
-        <option>...</option>
-      </select>
-    </div>
-    <div class="col-4">
-      <label for="hdCreateDate" class="form-label">Criado em</label>
-      <input type="text" class="form-control" id="hdCreateDate" disabled formControlName="hdCreateDate">
-    </div>
-    <div class="col-12">
-      <label for="hdDescription" class="form-label">Descrição</label>
-      <textarea class="form-control" id="hdDescription" rows="3" formControlName="hdDescription"></textarea>
-    </div>
-    <div class="col-12">
-      <button type="submit" class="btn btn-primary" (click)="onSubmit()">Abrir Chamado</button>
-    </div>
-  </form>
-  <div class="col-md-6">
-    <label>
-      <strong>myForm : JSON</strong>
-    </label>
-    <pre class="alert alert-dark">{{myForm.value | json}}</pre>
   </div>
 </div>

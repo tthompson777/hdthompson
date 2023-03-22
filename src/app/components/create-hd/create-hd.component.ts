@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { 
+import {
   FormGroup,
   FormBuilder,
-  Validators 
+  Validators
 } from '@angular/forms';
 
 import { HdService } from '../../services/hd.service';
 import moment from 'moment';
+import { OPTIONS_HD_TYPE, OPTIONS_HD_PRIORITY, OPTIONS_HD_STATUS, } from '../../constants/constants';
 
 @Component({
   selector: 'app-create-hd',
@@ -18,13 +19,21 @@ export class CreateHdComponent implements OnInit {
 
   myForm: FormGroup;
 
+  // Enuns
+  optionsHdType = OPTIONS_HD_TYPE;
+  optionsHdPriority = OPTIONS_HD_PRIORITY;
+  optionsHdStatus = OPTIONS_HD_STATUS;
+
   constructor(private fb: FormBuilder, private serviceHd: HdService) { }
 
   get hdTitle() {
     return this.myForm.get("hdTitle");
   }
-  get htType() {
-    return this.myForm.get("htType");
+  get hdType() {
+    return this.myForm.get("hdType");
+  }
+  get hdStatus() {
+    return this.myForm.get("hdStatus");
   }
   get hdPriority() {
     return this.myForm.get("hdPriority");
@@ -43,15 +52,22 @@ export class CreateHdComponent implements OnInit {
   createForm() {
     this.myForm = this.fb.group({
       hdTitle: ["", [Validators.required]],
-      htType: ["", [Validators.required]],
+      hdType: ["", [Validators.required]],
+      hdStatus: ["", [Validators.required]],
       hdPriority: ["", [Validators.required]],
       hdCreateDate: [moment().format('DD/MM/YYY HH:mm'), [Validators.required]],
       hdDescription: ["", [Validators.required]],
+      selectControl: [Validators.required],
+      options: [Validators.required],
     },
-    {
-      updateOn: 
-      "blur" 
-    });
+      {
+        updateOn:
+          "blur"
+      });
+  }
+
+  onChange(selectedValue: string) {
+    console.log(selectedValue);
   }
 
   onSubmit() {
