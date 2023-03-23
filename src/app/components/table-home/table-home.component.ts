@@ -9,12 +9,21 @@ import { HdService } from '../../services/hd.service';
 })
 export class TableHomeComponent implements OnInit {
 
-  dataHds: Array<Hd> = []
+  dataHds: []
 
   constructor(private serviceHd: HdService) {}
 
   ngOnInit(): void {
+    // Obtendo todos os chamados
     this.serviceHd.getHds().subscribe((data: any) => {
+      this.dataHds = data
+      console.log(this.dataHds)
+    })
+  }
+
+  // Deletar um chamado
+  deleteHd(id: string) {
+    this.serviceHd.deleteHds(id).subscribe((data: any) => {
       this.dataHds = data
       console.log(this.dataHds)
     })

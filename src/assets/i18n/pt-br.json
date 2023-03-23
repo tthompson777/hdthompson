@@ -1,0 +1,14 @@
+{
+  "TODO": "A fazer",
+  "IN_PROGRESS": "Em andamento",
+  "ON_HOLD": "Em espera",
+  "HELP": "Suporte Técnico",
+  "FINANCIAL": "Financeiro",
+  "ADM": "Administrativo",
+  "RH": "Recursos Humanos",
+  "LOW": "Baixa",
+  "NORMAL": "Normal",
+  "HIGH": "Alta",
+  "URGENTE": "Urgente",
+  "actions": "Ações"
+}

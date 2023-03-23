@@ -3,14 +3,31 @@
   overflow: hidden
 }
 
-.table100 .ps__rail-y {
+.table-home {
+  background-color: #fff;
+  & .table-home--buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    & i {
+      font-size: 0.8rem;
+    }
+  }
+}
+
+.table-home.ver1 tr:hover td {
+  background-color: #eff1ff;
+  cursor: pointer
+}
+
+.table-home .ps__rail-y {
   width: 9px;
   background-color: transparent;
   opacity: 1!important;
   right: 5px
 }
 
-.table100 .ps__rail-y::before {
+.table-home .ps__rail-y::before {
   content: "";
   display: block;
   position: absolute;
@@ -22,14 +39,14 @@
   top: 15px
 }
 
-.table100 .ps__rail-y .ps__thumb-y {
+.table-home .ps__rail-y .ps__thumb-y {
   width: 100%;
   right: 0;
   background-color: transparent;
   opacity: 1!important
 }
 
-.table100 .ps__rail-y .ps__thumb-y::before {
+.table-home .ps__rail-y .ps__thumb-y::before {
   content: "";
   display: block;
   position: absolute;
@@ -46,7 +63,7 @@
   margin: 0 auto
 }
 
-.container-table100 {
+.container-table-home {
   width: 100%;
   min-height: 100vh;
   background: #fff;
@@ -61,12 +78,8 @@
   padding: 33px 30px
 }
 
-.wrap-table100 {
+.wrap-table-home {
   width: 1170px
-}
-
-.table100 {
-  background-color: #fff
 }
 
 table {
@@ -78,74 +91,52 @@ th,td {
   padding-right: 10px
 }
 
-.column1 {
-  width: 33%;
-  padding-left: 40px
-}
-
-.column2 {
-  width: 13%
-}
-
-.column3 {
-  width: 22%
-}
-
-.column4 {
-  width: 19%
-}
-
-.column5 {
-  width: 13%
-}
-
-.table100-head th {
+.table-home-head th {
   padding-top: 18px;
   padding-bottom: 18px
 }
 
-.table100-body td {
+.table-home-body td {
   padding-top: 16px;
   padding-bottom: 16px
 }
 
-.table100 {
+.table-home {
   position: relative;
   padding-top: 60px
 }
 
-.table100-head {
+.table-home-head {
   position: absolute;
   width: 100%;
   top: 0;
   left: 0
 }
 
-.table100-body {
+.table-home-body {
   max-height: 585px;
   overflow: auto
 }
 
-.table100.ver1 th {
-  font-family: Lato-Bold;
+.table-home.ver1 th {
   font-size: 18px;
   color: #fff;
   line-height: 1.4;
   background-color: #6c7ae0
 }
 
-.table100.ver1 td {
+.table-home.ver1 td {
   font-family: Lato-Regular;
   font-size: 15px;
   color: gray;
   line-height: 1.4
 }
 
-.table100.ver1 .table100-body tr:nth-child(even) {
+.table-home.ver1 .table-home-body tr:nth-child(even) {
   background-color: #f8f6ff
 }
 
-.table100.ver1 {
+.table-home.ver1 {
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 0 40px 0 rgba(0,0,0,.15);
@@ -155,19 +146,19 @@ th,td {
   -ms-box-shadow: 0 0 40px 0 rgba(0,0,0,.15)
 }
 
-.table100.ver1 .ps__rail-y {
+.table-home.ver1 .ps__rail-y {
   right: 5px
 }
 
-.table100.ver1 .ps__rail-y::before {
+.table-home.ver1 .ps__rail-y::before {
   background-color: #ebebeb
 }
 
-.table100.ver1 .ps__rail-y .ps__thumb-y::before {
+.table-home.ver1 .ps__rail-y .ps__thumb-y::before {
   background-color: #ccc
 }
 
-.table100.ver2 .table100-head {
+.table-home.ver2 .table-home-head {
   box-shadow: 0 5px 20px 0 rgba(0,0,0,.1);
   -moz-box-shadow: 0 5px 20px 0 rgba(0,0,0,.1);
   -webkit-box-shadow: 0 5px 20px 0 rgba(0,0,0,.1);
@@ -175,26 +166,25 @@ th,td {
   -ms-box-shadow: 0 5px 20px 0 rgba(0,0,0,.1)
 }
 
-.table100.ver2 th {
-  font-family: Lato-Bold;
+.table-home.ver2 th {
   font-size: 18px;
   color: #fa4251;
   line-height: 1.4;
   background-color: transparent
 }
 
-.table100.ver2 td {
+.table-home.ver2 td {
   font-family: Lato-Regular;
   font-size: 15px;
   color: gray;
   line-height: 1.4
 }
 
-.table100.ver2 .table100-body tr {
+.table-home.ver2 .table-home-body tr {
   border-bottom: 1px solid #f2f2f2
 }
 
-.table100.ver2 {
+.table-home.ver2 {
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 0 40px 0 rgba(0,0,0,.15);
@@ -204,24 +194,23 @@ th,td {
   -ms-box-shadow: 0 0 40px 0 rgba(0,0,0,.15)
 }
 
-.table100.ver2 .ps__rail-y {
+.table-home.ver2 .ps__rail-y {
   right: 5px
 }
 
-.table100.ver2 .ps__rail-y::before {
+.table-home.ver2 .ps__rail-y::before {
   background-color: #ebebeb
 }
 
-.table100.ver2 .ps__rail-y .ps__thumb-y::before {
+.table-home.ver2 .ps__rail-y .ps__thumb-y::before {
   background-color: #ccc
 }
 
-.table100.ver3 {
+.table-home.ver3 {
   background-color: #393939
 }
 
-.table100.ver3 th {
-  font-family: Lato-Bold;
+.table-home.ver3 th {
   font-size: 15px;
   color: #00ad5f;
   line-height: 1.4;
@@ -229,7 +218,7 @@ th,td {
   background-color: #393939
 }
 
-.table100.ver3 td {
+.table-home.ver3 td {
   font-family: Lato-Regular;
   font-size: 15px;
   color: gray;
@@ -237,7 +226,7 @@ th,td {
   background-color: #222
 }
 
-.table100.ver3 {
+.table-home.ver3 {
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 0 40px 0 rgba(0,0,0,.15);
@@ -247,28 +236,27 @@ th,td {
   -ms-box-shadow: 0 0 40px 0 rgba(0,0,0,.15)
 }
 
-.table100.ver3 .ps__rail-y {
+.table-home.ver3 .ps__rail-y {
   right: 5px
 }
 
-.table100.ver3 .ps__rail-y::before {
+.table-home.ver3 .ps__rail-y::before {
   background-color: #4e4e4e
 }
 
-.table100.ver3 .ps__rail-y .ps__thumb-y::before {
+.table-home.ver3 .ps__rail-y .ps__thumb-y::before {
   background-color: #00ad5f
 }
 
-.table100.ver4 {
+.table-home.ver4 {
   margin-right: -20px
 }
 
-.table100.ver4 .table100-head {
+.table-home.ver4 .table-home-head {
   padding-right: 20px
 }
 
-.table100.ver4 th {
-  font-family: Lato-Bold;
+.table-home.ver4 th {
   font-size: 18px;
   color: #4272d7;
   line-height: 1.4;
@@ -276,51 +264,50 @@ th,td {
   border-bottom: 2px solid #f2f2f2
 }
 
-.table100.ver4 .column1 {
+.table-home.ver4 {
   padding-left: 7px
 }
 
-.table100.ver4 td {
+.table-home.ver4 td {
   font-family: Lato-Regular;
   font-size: 15px;
   color: gray;
   line-height: 1.4
 }
 
-.table100.ver4 .table100-body tr {
+.table-home.ver4 .table-home-body tr {
   border-bottom: 1px solid #f2f2f2
 }
 
-.table100.ver4 {
+.table-home.ver4 {
   overflow: hidden
 }
 
-.table100.ver4 .table100-body {
+.table-home.ver4 .table-home-body {
   padding-right: 20px
 }
 
-.table100.ver4 .ps__rail-y {
+.table-home.ver4 .ps__rail-y {
   right: 0
 }
 
-.table100.ver4 .ps__rail-y::before {
+.table-home.ver4 .ps__rail-y::before {
   background-color: #ebebeb
 }
 
-.table100.ver4 .ps__rail-y .ps__thumb-y::before {
+.table-home.ver4 .ps__rail-y .ps__thumb-y::before {
   background-color: #ccc
 }
 
-.table100.ver5 {
+.table-home.ver5 {
   margin-right: -30px
 }
 
-.table100.ver5 .table100-head {
+.table-home.ver5 .table-home-head {
   padding-right: 30px
 }
 
-.table100.ver5 th {
-  font-family: Lato-Bold;
+.table-home.ver5 th {
   font-size: 14px;
   color: #555;
   line-height: 1.4;
@@ -328,7 +315,7 @@ th,td {
   background-color: transparent
 }
 
-.table100.ver5 td {
+.table-home.ver5 td {
   font-family: Lato-Regular;
   font-size: 15px;
   color: gray;
@@ -336,62 +323,57 @@ th,td {
   background-color: #f7f7f7
 }
 
-.table100.ver5 .table100-body tr {
+.table-home.ver5 .table-home-body tr {
   overflow: hidden;
   border-bottom: 10px solid #fff;
   border-radius: 10px
 }
 
-.table100.ver5 .table100-body table {
+.table-home.ver5 .table-home-body table {
   border-collapse: separate;
   border-spacing: 0 10px
 }
 
-.table100.ver5 .table100-body td {
+.table-home.ver5 .table-home-body td {
   border: solid 1px transparent;
   border-style: solid none;
   padding-top: 10px;
   padding-bottom: 10px
 }
 
-.table100.ver5 .table100-body td:first-child {
+.table-home.ver5 .table-home-body td:first-child {
   border-left-style: solid;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px
 }
 
-.table100.ver5 .table100-body td:last-child {
+.table-home.ver5 .table-home-body td:last-child {
   border-right-style: solid;
   border-bottom-right-radius: 10px;
   border-top-right-radius: 10px
 }
 
-.table100.ver5 tr:hover td {
-  background-color: #ebebeb;
-  cursor: pointer
-}
-
-.table100.ver5 .table100-head th {
+.table-home.ver5 .table-home-head th {
   padding-top: 25px;
   padding-bottom: 25px
 }
 
-.table100.ver5 {
+.table-home.ver5 {
   overflow: hidden
 }
 
-.table100.ver5 .table100-body {
+.table-home.ver5 .table-home-body {
   padding-right: 30px
 }
 
-.table100.ver5 .ps__rail-y {
+.table-home.ver5 .ps__rail-y {
   right: 0
 }
 
-.table100.ver5 .ps__rail-y::before {
+.table-home.ver5 .ps__rail-y::before {
   background-color: #ebebeb
 }
 
-.table100.ver5 .ps__rail-y .ps__thumb-y::before {
+.table-home.ver5 .ps__rail-y .ps__thumb-y::before {
   background-color: #ccc
 }

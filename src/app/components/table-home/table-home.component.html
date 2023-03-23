@@ -1,34 +1,49 @@
-<div class="container-table100">
-  <div class="wrap-table100">
-    <div class="table100 ver1 m-b-110">
-      <div class="table100-head">
+<div class="container-table-home">
+  <div class="wrap-table-home">
+    <div *ngIf="dataHds?.length > 0" class="table-home ver1 m-b-110">
+      <div class="table-home-head">
         <table>
           <thead>
             <tr class="row100 head">
-              <th class="cell100 column1">Título</th>
-              <th class="cell100 column2">Tipo</th>
-              <th class="cell100 column2">Situação</th>
-              <th class="cell100 column3">Prioridade</th>
-              <th class="cell100 column4">Criado em</th>
-              <th class="cell100 column5">Resumo</th>
+              <th>Título</th>
+              <th>Tipo</th>
+              <th>Situação</th>
+              <th>Prioridade</th>
+              <th>Criado em</th>
+              <th>Resumo</th>
+              <th translate="">actions</th>
             </tr>
           </thead>
         </table>
       </div>
-      <div class="table100-body js-pscroll ps ps--active-y">
+      <div class="table-home-body js-pscroll ps ps--active-y">
         <table>
           <tbody>
-            <tr class="row100 body" *ngFor="let dado of dataHds">
-              <td class="cell100 column1">{{ dado.hdTitle }}</td>
-              <td class="cell100 column2">{{ dado.hdType }}</td>
-              <td class="cell100 column3">{{ dado.hdStatus }}</td>
-              <td class="cell100 column4">{{ dado.hdPriority }}</td>
-              <td class="cell100 column5">{{ dado.hdCreateDate }}</td>
-              <td class="cell100 column6">{{ dado.hdDescription }}</td>
+            <tr class="row100 body" *ngFor="let row of dataHds">
+              <td>{{ row.hdTitle }}</td>
+              <td translate>{{ row.hdType }}</td>
+              <td translate>{{ row.hdStatus }}</td>
+              <td translate>{{ row.hdPriority }}</td>
+              <td>{{ row.hdCreateDate }}</td>
+              <td>{{ row.hdDescription }}</td>
+              <td class="table-home--buttons">
+                <button type="button" class="btn btn-primary"><i class="fas fa-edit"></i></button>
+                <button type="button" class="btn btn-success"><i class="fas fa-check"></i></button>
+                <button 
+                  type="button" 
+                  class="btn btn-danger"
+                  (click)="deleteHd(row._id)"
+                  >
+                  <i class="fas fa-trash"></i>
+                </button>
+              </td>
             </tr>
           </tbody>
         </table>
       </div>
+    </div>
+    <div *ngIf="dataHds?.length === 0">
+      <h1>Nada por aqui!</h1>
     </div>
   </div>
 </div>
