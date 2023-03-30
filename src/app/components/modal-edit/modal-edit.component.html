@@ -1,1 +1,103 @@
-<p>modal-edit works!</p>
+<div class="modal-header">
+  <h4 class="modal-title">Você está editando</h4>
+  <button type="button" class="close" aria-label="Close" (click)="modalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="modal-body">
+  <div class="row align-items-center justify-content-center">
+    <div class="col-md-7 py-5">
+      <h3>Edição</h3>
+      <form [formGroup]="editForm">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group first">
+              <label for="hdTitle">Título</label>
+              <input 
+                [ngModel]="selectedRow.hdTitle"
+                formControlName="hdTitle"
+                type="text" 
+                class="form-control" 
+                id="hdTitle" 
+              >
+              <span *ngIf="hdTitle.invalid" [ngClass]="'error'"> Name required with max 15 character.
+              </span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group first">
+              <label for="hdType">Tipo</label>
+              <select
+                [ngModel]="selectedRow.hdType"
+                (change)="onChange($event.target.value)" 
+                formControlName="hdType" 
+                class="form-control"
+              >
+                <option *ngFor="let option of optionsHdType" [value]="option.value">{{option.label}}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group first">
+              <label for="hdPriority">Prioridade</label>
+              <select 
+              [ngModel]="selectedRow.hdPriority"
+              formControlName="hdPriority"
+              (change)="onChange($event.target.value)" 
+              class="form-control" 
+              >
+                <option *ngFor="let option of optionsHdPriority" [value]="option.value">{{option.label}}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group first">
+              <label for="hdCreateDate">Criado em</label>
+              <input
+                [ngModel]="selectedRow.hdCreateDate"
+                formControlName="hdCreateDate" 
+                id="hdCreateDate" 
+                type="text" 
+                class="form-control" 
+                disabled
+              >
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group first">
+              <label for="hdStatus">Situação</label>
+              <select
+                [ngModel]="selectedRow.hdStatus"
+                formControlName="hdStatus"
+                (change)="onChange($event.target.value)" 
+                class="form-control" 
+              >
+                <option *ngFor="let option of optionsHdStatus" [value]="option.value">{{option.label}}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group first">
+              <label for="hdDescription">Descrição</label>
+              <textarea
+                [ngModel]="selectedRow.hdDescription"
+                formControlName="hdDescription"
+                class="form-control" 
+                id="hdDescription" 
+              ></textarea>
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn px-5 btn-primary" (click)="onSubmit()">Abrir Chamado</button>
+      </form>
+    </div>
+  </div>
+</div>

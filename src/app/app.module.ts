@@ -7,6 +7,7 @@ import { TranslateMessageFormatCompiler, MESSAGE_FORMAT_CONFIG } from 'ngx-trans
 import { TranslateModule, TranslateLoader, TranslateCompiler } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
+import { ModalModule } from 'ngx-bootstrap/modal';
 import { AppRoutingModule } from './app-routing.module';
 import { HdService } from './services/hd.service';
 import { AppComponent } from './app.component';
@@ -51,6 +52,10 @@ export function HttpLoaderFactory(http: HttpClient) {
         useClass: TranslateMessageFormatCompiler,
       },
     }),
+    ModalModule.forRoot(),
+  ],
+  entryComponents: [
+    ModalEditComponent
   ],
   providers: [
     HdService,

@@ -1,10 +1,10 @@
 <div class="container-table-home">
   <div class="wrap-table-home">
     <div *ngIf="dataHds?.length > 0" class="table-home ver1 m-b-110">
-      <div class="table-home-head">
+      <div class="table-home-body js-pscroll ps ps--active-y">
         <table>
-          <thead>
-            <tr class="row100 head">
+          <thead class="table-home-head">
+            <tr>
               <th>Título</th>
               <th>Tipo</th>
               <th>Situação</th>
@@ -14,10 +14,6 @@
               <th translate="">actions</th>
             </tr>
           </thead>
-        </table>
-      </div>
-      <div class="table-home-body js-pscroll ps ps--active-y">
-        <table>
           <tbody>
             <tr class="row100 body" *ngFor="let row of dataHds">
               <td>{{ row.hdTitle }}</td>
@@ -25,9 +21,25 @@
               <td translate>{{ row.hdStatus }}</td>
               <td translate>{{ row.hdPriority }}</td>
               <td>{{ row.hdCreateDate }}</td>
-              <td>{{ row.hdDescription }}</td>
+              <td *ngIf="row.hdDescription.length <= 30">
+                {{ row.hdDescription }}
+              </td>
+              <td 
+                *ngIf="row.hdDescription.length > 30"
+                data-toggle="tooltip"
+                data-placement="top" 
+                title="{{ row.hdDescription }}"
+              >
+                {{ row.hdDescription.slice(0,30)+'...' }}
+              </td>
               <td class="table-home--buttons">
-                <button type="button" class="btn btn-primary"><i class="fas fa-edit"></i></button>
+                <button 
+                  type="button" 
+                  class="btn btn-primary"
+                  (click)="openModal(row)"
+                >
+                  <i class="fas fa-edit"></i>
+                </button>
                 <button type="button" class="btn btn-success"><i class="fas fa-check"></i></button>
                 <button 
                   type="button" 

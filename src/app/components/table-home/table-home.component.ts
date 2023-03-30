@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import Hd from '../../interfaces/hd';
+import { Component, Input, OnInit, TemplateRef } from '@angular/core';
 import { HdService } from '../../services/hd.service';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal'
+import { ModalEditComponent } from '../modal-edit/modal-edit.component'
+import { SelectedRowService } from '../../services/selectedRow.service';
 
 @Component({
   selector: 'app-table-home',
@@ -9,16 +11,31 @@ import { HdService } from '../../services/hd.service';
 })
 export class TableHomeComponent implements OnInit {
 
-  dataHds: []
+  @Input() dataHds: any;
+  modalRef: BsModalRef;
 
-  constructor(private serviceHd: HdService) {}
+  constructor(
+    private serviceHd: HdService,
+    private modalService: BsModalService,
+    private selectedRowService: SelectedRowService
+  ) {}
 
   ngOnInit(): void {
     // Obtendo todos os chamados
     this.serviceHd.getHds().subscribe((data: any) => {
       this.dataHds = data
       console.log(this.dataHds)
+
+      this.selectedRowService.setSelectedRow({});
     })
+  }
+
+  openModal(tableRowData) {
+    const modalRef: BsModalRef = this.modalService.show(ModalEditComponent);
+    modalRef.content.dataHds = tableRowData;
+    
+    // Disponibilizando a linha selecionada da tabela
+    this.selectedRowService.setSelectedRow(tableRowData);
   }
 
   // Deletar um chamado

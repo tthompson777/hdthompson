@@ -55,7 +55,7 @@ export class CreateHdComponent implements OnInit {
       hdType: ["", [Validators.required]],
       hdStatus: ["", [Validators.required]],
       hdPriority: ["", [Validators.required]],
-      hdCreateDate: [moment().format('DD/MM/YYY HH:mm'), [Validators.required]],
+      hdCreateDate: [moment().format('DD/MM/YYYY HH:mm'), [Validators.required]],
       hdDescription: ["", [Validators.required]],
       selectControl: [Validators.required],
       options: [Validators.required],

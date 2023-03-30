@@ -65,12 +65,7 @@
 
 .container-table-home {
   width: 100%;
-  min-height: 100vh;
   background: #fff;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -92,25 +87,15 @@ th,td {
 }
 
 .table-home-head th {
-  padding-top: 18px;
-  padding-bottom: 18px
+  padding: 10px;
 }
 
 .table-home-body td {
-  padding-top: 16px;
-  padding-bottom: 16px
+  padding: 10px;
 }
 
 .table-home {
   position: relative;
-  padding-top: 60px
-}
-
-.table-home-head {
-  position: absolute;
-  width: 100%;
-  top: 0;
-  left: 0
 }
 
 .table-home-body {
