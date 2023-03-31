@@ -6,6 +6,20 @@
 </div>
 
 <div class="modal-body">
+  <div class="row">
+    <div class="container">
+      <div class="conversation" *ngFor="let message of conversation">
+        <div *ngIf="message.from === 'user'" class="message user">{{ message.message }}</div>
+        <div *ngIf="message.from === 'bot'" class="message bot">{{ message.message }}</div>
+      </div>
+    </div>
+
+    <div class="input-container">
+      <input type="text" [(ngModel)]="message" (keyup.enter)="sendMessage()" placeholder="Digite sua mensagem...">
+      <button (click)="sendMessage()">Enviar</button>
+    </div>
+  </div>
+
   <div class="row align-items-center justify-content-center">
     <div class="col-md-7 py-5">
       <h3>Edição</h3>

@@ -4,6 +4,7 @@ import moment from 'moment';
 import { OPTIONS_HD_PRIORITY, OPTIONS_HD_STATUS, OPTIONS_HD_TYPE } from 'src/app/constants/constants';
 import { HdService } from 'src/app/services/hd.service';
 import { SelectedRowService } from '../../services/selectedRow.service';
+import { OpenaiService } from '../../services/openai.service';
 
 @Component({
   selector: 'app-modal-edit',
@@ -21,10 +22,14 @@ export class ModalEditComponent implements OnInit {
   optionsHdPriority = OPTIONS_HD_PRIORITY;
   optionsHdStatus = OPTIONS_HD_STATUS;
 
+  message: string = '';
+  conversation: any[] = [];
+
   constructor(
     private fb: FormBuilder, 
     private serviceHd: HdService,
-    private selectedRowService: SelectedRowService
+    private selectedRowService: SelectedRowService,
+    private chatService: OpenaiService
   ) { }
 
   get hdTitle() {
@@ -78,6 +83,26 @@ export class ModalEditComponent implements OnInit {
     const _form = this.editForm.value
     this.serviceHd.postHds(_form).subscribe(data => {
       console.log(data)
+    });
+  }
+
+  sendMessage() {
+    if (this.message.trim() === '') {
+      return;
+    }
+
+    this.conversation.push({
+      message: this.message,
+      from: 'user'
+    });
+
+    this.chatService.sendMessage(this.message).subscribe((response: any) => {
+      this.conversation.push({
+        message: response.choices[0].text,
+        from: 'bot'
+      });
+
+      this.message = '';
     });
   }
 
