@@ -6,7 +6,7 @@ import Hd from '../../interfaces/hd'
 @Component({
   selector: 'app-mainscreen-component',
   templateUrl: './mainscreen-component.component.html',
-  styleUrls: ['./mainscreen-component.component.scss']
+  styleUrls: ['./mainscreen-component.component.css']
 })
 
 export class MainscreenComponentComponent implements OnInit {

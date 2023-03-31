@@ -12,7 +12,7 @@ import { OPTIONS_HD_TYPE, OPTIONS_HD_PRIORITY, OPTIONS_HD_STATUS, } from '../../
 @Component({
   selector: 'app-create-hd',
   templateUrl: './create-hd.component.html',
-  styleUrls: ['./create-hd.component.scss']
+  styleUrls: ['./create-hd.component.css']
 })
 
 export class CreateHdComponent implements OnInit {

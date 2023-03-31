@@ -1,13 +1,13 @@
-import { Component, Input, OnInit, TemplateRef } from '@angular/core';
-import { HdService } from '../../services/hd.service';
+import { Component, Input, OnInit } from '@angular/core'
+import { HdService } from '../../services/hd.service'
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal'
 import { ModalEditComponent } from '../modal-edit/modal-edit.component'
-import { SelectedRowService } from '../../services/selectedRow.service';
+import { SelectedRowService } from '../../services/selectedRow.service'
 
 @Component({
   selector: 'app-table-home',
   templateUrl: './table-home.component.html',
-  styleUrls: ['./table-home.component.scss']
+  styleUrls: ['./table-home.component.css']
 })
 export class TableHomeComponent implements OnInit {
 
