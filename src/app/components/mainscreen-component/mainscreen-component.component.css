@@ -1,7 +1,3 @@
-.table--hd {
-  & thead {
-    background-color: var(--bs-indigo);
-    color: var(--bs-white);
-  } 
-    
+.container-home {
+  padding-top: 8rem;
 }

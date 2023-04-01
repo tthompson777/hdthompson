@@ -13,6 +13,7 @@ export class TableHomeComponent implements OnInit {
 
   @Input() dataHds: any;
   modalRef: BsModalRef;
+  p: number = 1;
 
   constructor(
     private serviceHd: HdService,

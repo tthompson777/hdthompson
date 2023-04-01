@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   baseUrl: 'http://localhost:3003/publicacao',
-  OPENAI_API_KEY: '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'
+  OPENAI_API_KEY: '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'
 };
 
 /*

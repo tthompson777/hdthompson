@@ -26,7 +26,7 @@
       <form [formGroup]="editForm">
         <div class="row">
           <div class="col-md-12">
-            <div class="form-group first">
+            <div class="form-group">
               <label for="hdTitle">Título</label>
               <input 
                 [ngModel]="selectedRow.hdTitle"
@@ -40,7 +40,7 @@
             </div>
           </div>
           <div class="col-md-6">
-            <div class="form-group first">
+            <div class="form-group">
               <label for="hdType">Tipo</label>
               <select
                 [ngModel]="selectedRow.hdType"
@@ -54,7 +54,7 @@
             </div>
           </div>
           <div class="col-md-6">
-            <div class="form-group first">
+            <div class="form-group">
               <label for="hdPriority">Prioridade</label>
               <select 
               [ngModel]="selectedRow.hdPriority"
@@ -70,7 +70,7 @@
         </div>
         <div class="row">
           <div class="col-md-6">
-            <div class="form-group first">
+            <div class="form-group">
               <label for="hdCreateDate">Criado em</label>
               <input
                 [ngModel]="selectedRow.hdCreateDate"
@@ -83,7 +83,7 @@
             </div>
           </div>
           <div class="col-md-6">
-            <div class="form-group first">
+            <div class="form-group">
               <label for="hdStatus">Situação</label>
               <select
                 [ngModel]="selectedRow.hdStatus"
@@ -99,7 +99,7 @@
         </div>
         <div class="row">
           <div class="col-md-12">
-            <div class="form-group first">
+            <div class="form-group">
               <label for="hdDescription">Descrição</label>
               <textarea
                 [ngModel]="selectedRow.hdDescription"
@@ -110,7 +110,7 @@
             </div>
           </div>
         </div>
-        <button type="submit" class="btn px-5 btn-primary" (click)="onSubmit()">Abrir Chamado</button>
+        <button type="submit" class="btn px-4 btn-danger" (click)="onSubmit()">Abrir Chamado</button>
       </form>
     </div>
   </div>

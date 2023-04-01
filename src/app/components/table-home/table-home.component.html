@@ -1,65 +1,57 @@
 <div class="container-table-home">
   <div class="wrap-table-home">
-
-    <div class="flex flex-col items-center justify-center h-screen">
-      <h1 class="text-4xl font-bold mb-4">Bem-vindo ao meu site!</h1>
-      <p class="text-lg text-gray-600 max-w-md text-center">Este é um exemplo de HTML com algumas classes do Tailwind CSS.</p>
-      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">Clique aqui!</button>
-    </div>
-    
     <div *ngIf="dataHds?.length > 0" class="table-home ver1 m-b-110">
-      <div class="table-home-body js-pscroll ps ps--active-y">
-        <table>
-          <thead class="table-home-head">
-            <tr>
-              <th>Título</th>
-              <th>Tipo</th>
-              <th>Situação</th>
-              <th>Prioridade</th>
-              <th>Criado em</th>
-              <th>Resumo</th>
-              <th translate="">actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="row100 body" *ngFor="let row of dataHds">
-              <td>{{ row.hdTitle }}</td>
-              <td translate>{{ row.hdType }}</td>
-              <td translate>{{ row.hdStatus }}</td>
-              <td translate>{{ row.hdPriority }}</td>
-              <td>{{ row.hdCreateDate }}</td>
-              <td *ngIf="row.hdDescription.length <= 30">
-                {{ row.hdDescription }}
-              </td>
-              <td 
-                *ngIf="row.hdDescription.length > 30"
-                data-toggle="tooltip"
-                data-placement="top" 
-                title="{{ row.hdDescription }}"
+      <table class="table table-hover table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Título</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Situação</th>
+            <th scope="col">Prioridade</th>
+            <th scope="col">Criado em</th>
+            <th scope="col">Resumo</th>
+            <th scope="col" translate="">actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of dataHds | paginate: { itemsPerPage: 10, currentPage: p }">
+            <td>{{ row.hdTitle }}</td>
+            <td translate>{{ row.hdType }}</td>
+            <td translate>{{ row.hdStatus }}</td>
+            <td translate>{{ row.hdPriority }}</td>
+            <td>{{ row.hdCreateDate }}</td>
+            <td *ngIf="row.hdDescription.length <= 30">
+              {{ row.hdDescription }}
+            </td>
+            <td 
+              *ngIf="row.hdDescription.length > 30"
+              data-toggle="tooltip"
+              data-placement="top" 
+              title="{{ row.hdDescription }}"
+            >
+              {{ row.hdDescription.slice(0,30)+'...' }}
+            </td>
+            <td class="table-home--buttons">
+              <button 
+                type="button" 
+                class="btn btn-primary"
+                (click)="openModal(row)"
               >
-                {{ row.hdDescription.slice(0,30)+'...' }}
-              </td>
-              <td class="table-home--buttons">
-                <button 
-                  type="button" 
-                  class="btn btn-primary"
-                  (click)="openModal(row)"
+                <i class="fas fa-edit"></i>
+              </button>
+              <button type="button" class="btn btn-success"><i class="fas fa-check"></i></button>
+              <button 
+                type="button" 
+                class="btn btn-danger"
+                (click)="deleteHd(row._id)"
                 >
-                  <i class="fas fa-edit"></i>
-                </button>
-                <button type="button" class="btn btn-success"><i class="fas fa-check"></i></button>
-                <button 
-                  type="button" 
-                  class="btn btn-danger"
-                  (click)="deleteHd(row._id)"
-                  >
-                  <i class="fas fa-trash"></i>
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+                <i class="fas fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
     </div>
     <div *ngIf="dataHds?.length === 0">
       <h1>Nada por aqui!</h1>
