@@ -26,48 +26,45 @@ export function HttpLoaderFactory(http: HttpClient) {
 }
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    TableHomeComponent,
-    CreateHdComponent,
-    NotFoundComponent,
-    MainscreenComponentComponent,
-    FooterComponent,
-    ModalEditComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    FormsModule,
-    HttpClientModule,
-    NgxPaginationModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient],
-      },
-      compiler: {
-        provide: TranslateCompiler,
-        useClass: TranslateMessageFormatCompiler,
-      },
-    }),
-    ModalModule.forRoot(),
-  ],
-  entryComponents: [
-    ModalEditComponent
-  ],
-  providers: [
-    HdService,
-    { 
-      provide: MESSAGE_FORMAT_CONFIG, 
-      useValue: { 
-        locales: ['pt-br']
-      } 
-    },
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        HeaderComponent,
+        TableHomeComponent,
+        CreateHdComponent,
+        NotFoundComponent,
+        MainscreenComponentComponent,
+        FooterComponent,
+        ModalEditComponent,
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        FormsModule,
+        HttpClientModule,
+        NgxPaginationModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: HttpLoaderFactory,
+                deps: [HttpClient],
+            },
+            compiler: {
+                provide: TranslateCompiler,
+                useClass: TranslateMessageFormatCompiler,
+            },
+        }),
+        ModalModule.forRoot(),
+    ],
+    providers: [
+        HdService,
+        {
+            provide: MESSAGE_FORMAT_CONFIG,
+            useValue: {
+                locales: ['pt-br']
+            }
+        },
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
