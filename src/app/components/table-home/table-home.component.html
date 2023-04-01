@@ -1,60 +1,116 @@
-<div class="container-table-home">
-  <div class="wrap-table-home">
-    <div *ngIf="dataHds?.length > 0" class="table-home ver1 m-b-110">
-      <table class="table table-hover table-striped">
-        <thead>
-          <tr>
-            <th scope="col">Título</th>
-            <th scope="col">Tipo</th>
-            <th scope="col">Situação</th>
-            <th scope="col">Prioridade</th>
-            <th scope="col">Criado em</th>
-            <th scope="col">Resumo</th>
-            <th scope="col" translate="">actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let row of dataHds | paginate: { itemsPerPage: 10, currentPage: p }">
-            <td>{{ row.hdTitle }}</td>
-            <td translate>{{ row.hdType }}</td>
-            <td translate>{{ row.hdStatus }}</td>
-            <td translate>{{ row.hdPriority }}</td>
-            <td>{{ row.hdCreateDate }}</td>
-            <td *ngIf="row.hdDescription.length <= 30">
-              {{ row.hdDescription }}
-            </td>
-            <td 
-              *ngIf="row.hdDescription.length > 30"
-              data-toggle="tooltip"
-              data-placement="top" 
-              title="{{ row.hdDescription }}"
+<p-card header="Chamados">
+  
+  <p-table
+    class="luna-blue"
+    [value]="dataHds"
+    [paginator]="true"
+    [rows]="5"
+    [showCurrentPageReport]="true"
+    [tableStyle]="{ 'min-width': '50rem' }"
+    [rowsPerPageOptions]="[10, 25, 50]"
+  >
+    <ng-template pTemplate="header">
+        <tr>
+          <th>Título</th>
+          <th>Tipo</th>
+          <th>Situação</th>
+          <th>Prioridade</th>
+          <th>Criado em</th>
+          <th>Resumo</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-row>
+        <tr>
+          <td>{{ row.hdTitle }}</td>
+          <td translate>{{ row.hdType }}</td>
+          <td translate>{{ row.hdStatus }}</td>
+          <td translate>{{ row.hdPriority }}</td>
+          <td>{{ row.hdCreateDate }}</td>
+          <td *ngIf="row.hdDescription.length <= 30">
+            {{ row.hdDescription }}
+          </td>
+          <td 
+            *ngIf="row.hdDescription.length > 30"
+            data-toggle="tooltip"
+            data-placement="top" 
+            title="{{ row.hdDescription }}"
+          >
+            {{ row.hdDescription.slice(0,30)+'...' }}
+          </td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="paginatorleft">
+        <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+    </ng-template>
+    <ng-template pTemplate="paginatorright">
+        <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+    </ng-template>
+  </p-table>
+</p-card>
+
+
+<app-card headerTitle="Chamados">
+  <div *ngIf="dataHds?.length > 0">
+    <table class="table table-hover table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Título</th>
+          <th scope="col">Tipo</th>
+          <th scope="col">Situação</th>
+          <th scope="col">Prioridade</th>
+          <th scope="col">Criado em</th>
+          <th scope="col">Resumo</th>
+          <th scope="col" translate="">actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of dataHds">
+          <td>{{ row.hdTitle }}</td>
+          <td translate>{{ row.hdType }}</td>
+          <td translate>{{ row.hdStatus }}</td>
+          <td translate>{{ row.hdPriority }}</td>
+          <td>{{ row.hdCreateDate }}</td>
+          <td *ngIf="row.hdDescription.length <= 30">
+            {{ row.hdDescription }}
+          </td>
+          <td 
+            *ngIf="row.hdDescription.length > 30"
+            data-toggle="tooltip"
+            data-placement="top" 
+            title="{{ row.hdDescription }}"
+          >
+            {{ row.hdDescription.slice(0,30)+'...' }}
+          </td>
+          <td>
+            
+            
+            <button pButton type="button" label="Submit" class="p-button-success"></button>
+          </td>
+          <!-- <td class="table-home--buttons d-flex gap-2">
+            <button 
+              type="button" 
+              class="btn btn-primary"
+              (click)="openModal(row)"
+              tooltipPosition="top"
+              pTooltip="{{ 'edit' | translate }}"
             >
-              {{ row.hdDescription.slice(0,30)+'...' }}
-            </td>
-            <td class="table-home--buttons">
-              <button 
-                type="button" 
-                class="btn btn-primary"
-                (click)="openModal(row)"
+              <i class="fas fa-edit"></i>
+            </button>
+            <button
+              type="button" 
+              class="btn btn-danger"
+              (click)="deleteHd(row._id)"
+              tooltipPosition="top"
+              pTooltip="{{ 'delete' | translate }}"
               >
-                <i class="fas fa-edit"></i>
-              </button>
-              <button type="button" class="btn btn-success"><i class="fas fa-check"></i></button>
-              <button 
-                type="button" 
-                class="btn btn-danger"
-                (click)="deleteHd(row._id)"
-                >
-                <i class="fas fa-trash"></i>
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <pagination-controls (pageChange)="p = $event"></pagination-controls>
-    </div>
-    <div *ngIf="dataHds?.length === 0">
-      <h1>Nada por aqui!</h1>
-    </div>
+              <i class="fas fa-trash"></i>
+            </button>
+          </td> -->
+        </tr>
+      </tbody>
+    </table>
   </div>
-</div>
+  <div *ngIf="dataHds?.length === 0">
+    <h1>Nada por aqui!</h1>
+  </div>
+</app-card>

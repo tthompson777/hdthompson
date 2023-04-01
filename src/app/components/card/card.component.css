@@ -1,0 +1,13 @@
+.card {
+  border: 0;
+}
+
+.card-header {
+  border: 1px solid rgba(0, 0, 0, 0.175);
+  color: #fff;
+}
+
+.card-header {
+  border: 0;
+  background: #4e73df;
+}

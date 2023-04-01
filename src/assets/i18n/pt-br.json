@@ -10,5 +10,7 @@
   "NORMAL": "Normal",
   "HIGH": "Alta",
   "URGENTE": "Urgente",
-  "actions": "Ações"
+  "actions": "Ações",
+  "delete": "Excluir",
+  "edit": "Editar"
 }

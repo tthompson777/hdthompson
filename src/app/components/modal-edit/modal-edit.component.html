@@ -46,7 +46,7 @@
                 [ngModel]="selectedRow.hdType"
                 (change)="onChange($event.target.value)" 
                 formControlName="hdType" 
-                class="form-control"
+                class="form-control form-select"
               >
                 <option *ngFor="let option of optionsHdType" [value]="option.value">{{option.label}}
                 </option>
@@ -60,7 +60,7 @@
               [ngModel]="selectedRow.hdPriority"
               formControlName="hdPriority"
               (change)="onChange($event.target.value)" 
-              class="form-control" 
+              class="form-control form-select" 
               >
                 <option *ngFor="let option of optionsHdPriority" [value]="option.value">{{option.label}}
                 </option>
@@ -89,7 +89,7 @@
                 [ngModel]="selectedRow.hdStatus"
                 formControlName="hdStatus"
                 (change)="onChange($event.target.value)" 
-                class="form-control" 
+                class="form-control form-select" 
               >
                 <option *ngFor="let option of optionsHdStatus" [value]="option.value">{{option.label}}
                 </option>

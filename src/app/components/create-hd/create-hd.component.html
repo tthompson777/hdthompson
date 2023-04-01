@@ -21,7 +21,7 @@
               <select 
                 (change)="onChange($event.target.value)" 
                 formControlName="hdType" 
-                class="form-control"
+                class="form-control form-select"
               >
                 <option *ngFor="let option of optionsHdType" [value]="option.value">{{option.label}}</option>
               </select>
@@ -31,7 +31,7 @@
             <div class="form-group">
               <label for="hdPriority">Prioridade</label>
               <select 
-                class="form-control"
+                class="form-control form-select"
                 (change)="onChange($event.target.value)" 
                 formControlName="hdPriority" 
               >
@@ -57,7 +57,7 @@
             <div class="form-group">
               <label for="hdStatus">Situação</label>
               <select 
-                class="form-control"
+                class="form-control form-select"
                 (change)="onChange($event.target.value)" 
                 formControlName="hdStatus" 
               >

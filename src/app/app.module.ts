@@ -1,13 +1,21 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 import { TranslateMessageFormatCompiler, MESSAGE_FORMAT_CONFIG } from 'ngx-translate-messageformat-compiler';
 import { TranslateModule, TranslateLoader, TranslateCompiler } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ModalModule } from 'ngx-bootstrap/modal';
-import { NgxPaginationModule } from 'ngx-pagination';
+
+// primeng
+import { TooltipModule } from 'primeng/tooltip';
+import { ButtonModule } from 'primeng/button';
+import { TableModule } from 'primeng/table';
+import { DropdownModule } from 'primeng/dropdown';
+import { CardModule } from 'primeng/card';
 
 import { AppRoutingModule } from './app-routing.module';
 import { HdService } from './services/hd.service';
@@ -19,6 +27,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { MainscreenComponentComponent } from './components/mainscreen-component/mainscreen-component.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ModalEditComponent } from './components/modal-edit/modal-edit.component';
+import { CardComponent } from './components/card/card.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -35,6 +44,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MainscreenComponentComponent,
     FooterComponent,
     ModalEditComponent,
+    CardComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,7 +52,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    NgxPaginationModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -55,6 +64,13 @@ export function HttpLoaderFactory(http: HttpClient) {
       },
     }),
     ModalModule.forRoot(),
+    TooltipModule,
+    ButtonModule,
+    TableModule,
+    DropdownModule,
+    ScrollingModule,
+    CardModule,
+    BrowserAnimationsModule
   ],
   entryComponents: [
     ModalEditComponent
