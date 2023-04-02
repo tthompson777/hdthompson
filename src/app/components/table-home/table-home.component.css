@@ -1,8 +1,3 @@
-.table-home--buttons .btn {
-  padding: 5px;
-  border-radius: 3px;
-  width: 35px;
-}
-.table-home--buttons i {
+.ui-button-text.ui-clickable {
   font-size: .8rem;
 }

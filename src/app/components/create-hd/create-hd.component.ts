@@ -8,6 +8,7 @@ import {
 import { HdService } from '../../services/hd.service';
 import moment from 'moment';
 import { OPTIONS_HD_TYPE, OPTIONS_HD_PRIORITY, OPTIONS_HD_STATUS, } from '../../constants/constants';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-create-hd',
@@ -21,10 +22,16 @@ export class CreateHdComponent implements OnInit {
 
   // Enuns
   optionsHdType = OPTIONS_HD_TYPE;
+  optionsHdTypeSelected = 'HELP';
+  optionsHdStatusSelected = 'IN_PROGRESS';
+  optionsHdPrioritySelected = 'NORMAL';
   optionsHdPriority = OPTIONS_HD_PRIORITY;
   optionsHdStatus = OPTIONS_HD_STATUS;
 
-  constructor(private fb: FormBuilder, private serviceHd: HdService) { }
+  constructor(
+    private fb: FormBuilder, 
+    private serviceHd: HdService,
+    private messageService: MessageService,) { }
 
   get hdTitle() {
     return this.myForm.get("hdTitle");
@@ -70,10 +77,15 @@ export class CreateHdComponent implements OnInit {
     console.log(selectedValue);
   }
 
+  addSingle() {
+    this.messageService.add({severity:'success', summary:'Service Message', detail:'Via MessageService'});
+  }
+
   onSubmit() {
     const _form = this.myForm.value
     this.serviceHd.postHds(_form).subscribe(data => {
       console.log(data)
+      this.addSingle()
     });
   }
 

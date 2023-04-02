@@ -11,11 +11,16 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ModalModule } from 'ngx-bootstrap/modal';
 
 // primeng
+import { MessageService } from 'primeng/api';
 import { TooltipModule } from 'primeng/tooltip';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { DropdownModule } from 'primeng/dropdown';
 import { CardModule } from 'primeng/card';
+import { MessagesModule } from 'primeng/messages';
+import { MessageModule } from 'primeng/message';
+import { ToastModule } from 'primeng/toast';
+import { SelectButtonModule } from 'primeng/selectbutton';
 
 import { AppRoutingModule } from './app-routing.module';
 import { HdService } from './services/hd.service';
@@ -28,6 +33,7 @@ import { MainscreenComponentComponent } from './components/mainscreen-component/
 import { FooterComponent } from './components/footer/footer.component';
 import { ModalEditComponent } from './components/modal-edit/modal-edit.component';
 import { CardComponent } from './components/card/card.component';
+import { ToastDialogComponent } from './components/toast-dialog/toast-dialog.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -44,6 +50,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MainscreenComponentComponent,
     FooterComponent,
     ModalEditComponent,
+    ToastDialogComponent,
     CardComponent,
   ],
   imports: [
@@ -70,6 +77,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     DropdownModule,
     ScrollingModule,
     CardModule,
+    MessagesModule,
+    MessageModule,
+    ToastModule,
+    SelectButtonModule,
     BrowserAnimationsModule
   ],
   entryComponents: [
@@ -77,6 +88,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   providers: [
     HdService,
+    MessageService,
     { 
       provide: MESSAGE_FORMAT_CONFIG, 
       useValue: { 

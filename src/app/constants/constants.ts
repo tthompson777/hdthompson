@@ -43,7 +43,8 @@ export const OPTIONS_HD_STATUS = [
   },
   { 
     label: 'Em andamento',
-    value: 'IN_PROGRESS' 
+    value: 'IN_PROGRESS',
+    icon: 'pi pi-check'
   },
   { 
     label: 'Em espera',

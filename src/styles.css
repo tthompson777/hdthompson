@@ -1,11 +1,16 @@
-@import "primeng/resources/primeng.css";
-@import "primeng/resources/themes/luna-blue/theme.css";
-@import "primeicons/primeicons.css";
-
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 * {
   font-family: 'Open Sans', sans-serif;
+}
+
+body {
+  background-color: #EDF5FF !important;
+}
+
+/* COMPONENTE DE BOTÃO ESTILO SELECT */
+body .ui-selectbutton .ui-button {
+  font-size: .8rem;
 }
 
 /* SOBRESCREVENDO ALGUMAS CLASSES DO BOOTSTRAOP */

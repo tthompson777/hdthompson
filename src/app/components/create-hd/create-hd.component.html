@@ -1,85 +1,111 @@
-<div class="container mt-5">
+<div id="create_hd_page" class="container mt-5">
   <div class="row align-items-center justify-content-center">
     <div class="col-md-12 py-5">
-      <form [formGroup]="myForm">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="form-group">
-              <label for="hdTitle">Título</label>
-              <input 
-                type="text" 
-                class="form-control" 
-                id="hdTitle" 
-                formControlName="hdTitle"
-              >
-              <span *ngIf="hdTitle.invalid" [ngClass]="'error'"> Name required with max 15 character. </span>
+      <p-card header="Criar chamado">
+        <form [formGroup]="myForm">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="hdTitle">Título</label>
+                <input 
+                  type="text"
+                  class="form-control" 
+                  id="hdTitle" 
+                  formControlName="hdTitle"
+                >
+                <span *ngIf="hdTitle.invalid" [ngClass]="'error'"> Name required with max 15 character. </span>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-12 col-xs-12">
+              <div class="ui-clickable-custom-filedset">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <label for="hdType">Tipo</label>
+                  </div>
+                </div>
+                <p-selectButton 
+                  [(ngModel)]="optionsHdTypeSelected"
+                  [options]="optionsHdType" 
+                  (change)="onChange($event.target.value)" 
+                  formControlName="hdType"
+                >
+                </p-selectButton>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-12 col-xs-12">
+              <div class="ui-clickable-custom-filedset">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <label for="hdDescription">Prioridade</label>
+                  </div>
+                </div>
+                <p-selectButton 
+                  [(ngModel)]="optionsHdPrioritySelected"
+                  [options]="optionsHdPriority" 
+                  (change)="onChange($event.target.value)" 
+                  formControlName="hdPriority"
+                >
+                </p-selectButton>
+              </div>
             </div>
           </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="hdType">Tipo</label>
-              <select 
-                (change)="onChange($event.target.value)" 
-                formControlName="hdType" 
-                class="form-control form-select"
-              >
-                <option *ngFor="let option of optionsHdType" [value]="option.value">{{option.label}}</option>
-              </select>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="hdCreateDate">Criado em</label>
+                <input 
+                  type="text"
+                  pInputText
+                  class="form-control" 
+                  id="hdCreateDate" 
+                  formControlName="hdCreateDate"
+                  disabled 
+                >
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-12 col-xs-12">
+              <div class="ui-clickable-custom-filedset">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <label for="hdDescription">Situação</label>
+                  </div>
+                </div>
+                <p-selectButton 
+                  [(ngModel)]="optionsHdStatusSelected"
+                  [options]="optionsHdStatus" 
+                  (change)="onChange($event.target.value)" 
+                  formControlName="hdStatus"
+                >
+                </p-selectButton>
+              </div>
             </div>
           </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="hdPriority">Prioridade</label>
-              <select 
-                class="form-control form-select"
-                (change)="onChange($event.target.value)" 
-                formControlName="hdPriority" 
-              >
-                <option *ngFor="let option of optionsHdPriority" [value]="option.value">{{option.label}}</option>
-              </select>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="hdDescription">Descrição</label>
+                <textarea 
+                  class="form-control" 
+                  id="hdDescription"
+                  formControlName="hdDescription"
+                ></textarea>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="hdCreateDate">Criado em</label>
-              <input 
-                type="text" 
-                class="form-control" 
-                id="hdCreateDate" 
-                formControlName="hdCreateDate"
-                disabled 
-              >
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="hdStatus">Situação</label>
-              <select 
-                class="form-control form-select"
-                (change)="onChange($event.target.value)" 
-                formControlName="hdStatus" 
-              >
-                <option *ngFor="let option of optionsHdStatus" [value]="option.value">{{option.label}}</option>
-              </select>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="form-group">
-              <label for="hdDescription">Descrição</label>
-              <textarea 
-                class="form-control" 
-                id="hdDescription"
-                formControlName="hdDescription"
-              ></textarea>
-            </div>
-          </div>
-        </div>
-        <button type="submit" class="btn px-5 btn-danger" (click)="onSubmit()">Abrir Chamado</button>
-      </form>
+
+          <p-button 
+            icon="pi pi-plus" 
+            styleClass="ui-button-success"
+            class="m-1"
+            [disabled]="false"
+            label="Abrir Chamado"
+            (click)="onSubmit()"
+          >
+          </p-button>
+        </form>
+      </p-card>
     </div>
   </div>
 </div>
+
+<app-toast-dialog position="top-right"></app-toast-dialog>
