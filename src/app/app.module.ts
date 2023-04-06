@@ -5,13 +5,18 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 
+// Material
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+
 import { TranslateMessageFormatCompiler, MESSAGE_FORMAT_CONFIG } from 'ngx-translate-messageformat-compiler';
 import { TranslateModule, TranslateLoader, TranslateCompiler } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ModalModule } from 'ngx-bootstrap/modal';
 
 // primeng
-import { MessageService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { TooltipModule } from 'primeng/tooltip';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
@@ -81,7 +86,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     MessageModule,
     ToastModule,
     SelectButtonModule,
-    BrowserAnimationsModule
+    ConfirmDialogModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatInputModule
   ],
   entryComponents: [
     ModalEditComponent
@@ -89,6 +97,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   providers: [
     HdService,
     MessageService,
+    ConfirmationService,
     { 
       provide: MESSAGE_FORMAT_CONFIG, 
       useValue: { 

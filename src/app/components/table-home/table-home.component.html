@@ -22,7 +22,7 @@
           </tr>
       </ng-template>
       <ng-template pTemplate="body" let-row>
-          <tr>
+          <tr (click)="handleSelectedRowId(row._id)">
             <td>{{ row.hdTitle }}</td>
             <td translate>{{ row.hdType }}</td>
             <td translate>{{ row.hdStatus }}</td>
@@ -39,29 +39,44 @@
             >
               {{ row.hdDescription.slice(0,30)+'...' }}
             </td>
-            <td class="table-home--buttons">
-              <p-button 
-                icon="pi pi-file-edit" 
-                styleClass="ui-button-success"
-                class="m-1"
+            <td class="table-home--buttons">        
+              <button 
+                mat-raised-button 
+                color="primary"
                 (click)="openModal(row)"
                 tooltipPosition="top"
                 pTooltip="{{ 'edit' | translate }}"
-              >
-              </p-button>
-              <p-button 
-                icon="pi pi-trash " 
-                styleClass="ui-button-danger"
-                (click)="deleteHd(row._id)"
+              >Editar</button>
+              <button 
+                mat-raised-button 
+                color="primary"
                 tooltipPosition="top"
+                (click)="showConfirm()"
                 pTooltip="{{ 'delete' | translate }}"
-              >
-              </p-button>
+              >Deletar</button>
             </td>
           </tr>
       </ng-template>
     </p-table>
-</p-card>
+  </p-card>
 </div>
 
 <app-toast-dialog></app-toast-dialog>
+
+<p-toast position="center" key="c" (onClose)="onReject()" [modal]="true" [baseZIndex]="5000">
+  <ng-template pTemplate="message">
+      <div style="text-align: center">
+          <i class="pi pi-exclamation-triangle" style="font-size: 3em"></i>
+          <h3>teste</h3>
+          <p>kkkkkkkkkkkkk</p>
+      </div>
+      <div class="ui-g ui-fluid">
+          <div class="ui-g-6">
+              <button type="button" pButton (click)="deleteHd()" label="Yes" class="ui-button-success"></button>
+          </div>
+          <div class="ui-g-6">
+              <button type="button" pButton (click)="onReject()" label="No" class="ui-button-secondary"></button>
+          </div>
+      </div>
+  </ng-template>
+</p-toast>

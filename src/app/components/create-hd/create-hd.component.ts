@@ -19,6 +19,7 @@ import { MessageService } from 'primeng/api';
 export class CreateHdComponent implements OnInit {
 
   myForm: FormGroup;
+  loadingSpin: boolean = false;
 
   // Enuns
   optionsHdType = OPTIONS_HD_TYPE;
@@ -82,8 +83,10 @@ export class CreateHdComponent implements OnInit {
   }
 
   onSubmit() {
+    this.loadingSpin = true
     const _form = this.myForm.value
     this.serviceHd.postHds(_form).subscribe(data => {
+      this.loadingSpin = false
       console.log(data)
       this.addSingle()
     });
