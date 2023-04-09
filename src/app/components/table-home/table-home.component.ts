@@ -1,9 +1,20 @@
-import { Component, Input, OnInit } from '@angular/core'
+import { Component, Input, OnInit, ViewChild } from '@angular/core'
 import { HdService } from '../../services/hd.service'
+import { ModalService } from '../../services/modalService'
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal'
 import { ModalEditComponent } from '../modal-edit/modal-edit.component'
 import { SelectedRowService } from '../../services/selectedRow.service'
 import { MessageService } from 'primeng/api'
+
+
+export interface HdsData {
+  _id: string;
+  hdTitle: string;
+  hdType: string;
+  hdStatus: string;
+  hdPriority: string;
+  hdDescription: string;
+}
 
 @Component({
   selector: 'app-table-home',
@@ -22,10 +33,19 @@ export class TableHomeComponent implements OnInit {
     private modalService: BsModalService,
     private selectedRowService: SelectedRowService,
     private messageService: MessageService,
+    private modalServiceBootstrap: ModalService
   ) { }
 
   ngOnInit(): void {
     this.getHds();
+  }
+
+  inputclassLgModal() {
+    const divMinhaDiv = document.querySelector('.modal-dialog');
+
+    if (divMinhaDiv) {
+      divMinhaDiv.classList.add('modal-lg');
+    }
   }
 
   getHds(){
@@ -52,11 +72,22 @@ export class TableHomeComponent implements OnInit {
   }
 
   openModal(tableRowData) {
-    const modalRef: BsModalRef = this.modalService.show(ModalEditComponent);
-    modalRef.content.dataHds = tableRowData;
-
+    this.modalRef = this.modalService.show(ModalEditComponent);
+    this.modalRef.content.dataHds = tableRowData;
+    
     // Disponibilizando a linha selecionada da tabela
     this.selectedRowService.setSelectedRow(tableRowData);
+    this.inputclassLgModal();
+
+    // Quando a modal é fechada
+    this.modalService.onHidden.subscribe(() => {
+      this.getHds();
+    });
+
+    // Se inscreve no evento de fechar modal
+    this.modalServiceBootstrap.fecharModal$.subscribe(() => {
+      this.modalRef.hide();
+    });
   }
 
   // Deletar um chamado

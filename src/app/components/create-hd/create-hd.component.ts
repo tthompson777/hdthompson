@@ -52,6 +52,9 @@ export class CreateHdComponent implements OnInit {
   get hdDescription() {
     return this.myForm.get("hdDescription");
   }
+  get hdResolvedDate() {
+    return this.myForm.get("hdResolvedDate");
+  }
 
   ngOnInit() {
     this.createForm();
@@ -64,6 +67,7 @@ export class CreateHdComponent implements OnInit {
       hdStatus: ["", [Validators.required]],
       hdPriority: ["", [Validators.required]],
       hdCreateDate: [moment().format('DD/MM/YYYY HH:mm'), [Validators.required]],
+      hdResolvedDate: [],
       hdDescription: ["", [Validators.required]],
       selectControl: [Validators.required],
       options: [Validators.required],

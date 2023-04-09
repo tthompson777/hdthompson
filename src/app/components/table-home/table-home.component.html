@@ -10,7 +10,7 @@
       [tableStyle]="{ 'min-width': '50rem' }"
       [rowsPerPageOptions]="[5, 10, 25, 50]"
     >
-      <ng-template pTemplate="header">
+      <ng-template pTemplate="header" class="ui-table-thead-1">
           <tr>
             <th>Título</th>
             <th>Tipo</th>
@@ -40,20 +40,21 @@
               {{ row.hdDescription.slice(0,30)+'...' }}
             </td>
             <td class="table-home--buttons">        
-              <button 
-                mat-raised-button 
-                color="primary"
+              <p-button 
+                icon="pi pi-file-edit" 
+                styleClass="ui-button-success"
+                class="m-1"
                 (click)="openModal(row)"
                 tooltipPosition="top"
                 pTooltip="{{ 'edit' | translate }}"
-              >Editar</button>
-              <button 
-                mat-raised-button 
-                color="primary"
+              ></p-button>
+              <p-button 
+                icon="pi pi-trash " 
+                styleClass="ui-button-danger"
                 tooltipPosition="top"
                 (click)="showConfirm()"
                 pTooltip="{{ 'delete' | translate }}"
-              >Deletar</button>
+              ></p-button>
             </td>
           </tr>
       </ng-template>

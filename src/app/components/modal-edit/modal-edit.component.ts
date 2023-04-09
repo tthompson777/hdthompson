@@ -5,6 +5,7 @@ import { OPTIONS_HD_PRIORITY, OPTIONS_HD_STATUS, OPTIONS_HD_TYPE } from 'src/app
 import { HdService } from 'src/app/services/hd.service';
 import { SelectedRowService } from '../../services/selectedRow.service';
 import { OpenaiService } from '../../services/openai.service';
+import { ModalService } from '../../services/modalService';
 
 @Component({
   selector: 'app-modal-edit',
@@ -14,7 +15,7 @@ import { OpenaiService } from '../../services/openai.service';
 export class ModalEditComponent implements OnInit {
 
   @Input() dataHds: any;
-  selectedRow: any = {}; // objeto que armazenará os valores do formulário
+  selectedRow: any = {};
   editForm: FormGroup;
 
   // Enuns
@@ -29,7 +30,8 @@ export class ModalEditComponent implements OnInit {
     private fb: FormBuilder, 
     private serviceHd: HdService,
     private selectedRowService: SelectedRowService,
-    private chatService: OpenaiService
+    private chatService: OpenaiService,
+    private modalService: ModalService
   ) { }
 
   get hdTitle() {
@@ -50,6 +52,9 @@ export class ModalEditComponent implements OnInit {
   get hdDescription() {
     return this.editForm.get("hdDescription");
   }
+  get hdResolvedDate() {
+    return this.editForm.get("hdResolvedDate");
+  }
 
   ngOnInit() {
     this.selectedRowService.getSelectedRow().subscribe(row => {
@@ -65,6 +70,7 @@ export class ModalEditComponent implements OnInit {
       hdStatus: ["", [Validators.required]],
       hdPriority: ["", [Validators.required]],
       hdCreateDate: [moment().format('DD/MM/YYYY HH:mm'), [Validators.required]],
+      hdResolvedDate: [],
       hdDescription: ["", [Validators.required]],
       selectControl: [Validators.required],
       options: [Validators.required],
@@ -79,10 +85,11 @@ export class ModalEditComponent implements OnInit {
     console.log(selectedValue);
   }
 
-  onSubmit() {
+  onSaveEdit() {
     const _form = this.editForm.value
-    this.serviceHd.postHds(_form).subscribe(data => {
-      console.log(data)
+    _form._id = this.selectedRow._id
+    this.serviceHd.putHds(_form).subscribe(data => {
+      this.closeModal();
     });
   }
 
@@ -104,6 +111,10 @@ export class ModalEditComponent implements OnInit {
 
       this.message = '';
     });
+  }
+
+  closeModal() {
+    this.modalService.fecharModal();
   }
 
 }

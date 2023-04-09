@@ -26,4 +26,8 @@ export class HdService {
     return this.http.delete(`${baseUrl}/${id}`)
   }
 
+  putHds(body:any): Observable<any> {
+    return this.http.put(baseUrl, body)
+  }
+
 }
