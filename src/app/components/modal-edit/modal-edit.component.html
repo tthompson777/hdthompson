@@ -3,7 +3,7 @@
     <h4 class="modal-title">Chamado</h4>
     <p>Você está editando: {{ selectedRow.hdTitle }}</p>
   </div>
-  <i (click)="closeModal()" class="pi pi-times"></i>
+  <i (click)="closeModal()" class="pi pi-times hand"></i>
   
 </div>
 
@@ -131,6 +131,13 @@
             class="py-2"
             label="Salvar"
             (click)="onSaveEdit()"
+          ></p-button>
+          <p-button 
+            icon="pi pi-times" 
+            styleClass="ui-button-warning"
+            class="py-2 px-2"
+            label="Cancelar"
+            (click)="closeModal()"
           ></p-button>
         </form>
       </div>

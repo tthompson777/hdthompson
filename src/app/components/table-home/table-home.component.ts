@@ -1,11 +1,10 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core'
+import { Component, Input, OnInit } from '@angular/core'
 import { HdService } from '../../services/hd.service'
 import { ModalService } from '../../services/modalService'
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal'
 import { ModalEditComponent } from '../modal-edit/modal-edit.component'
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component'
 import { SelectedRowService } from '../../services/selectedRow.service'
-import { MessageService } from 'primeng/api'
-
 
 export interface HdsData {
   _id: string;
@@ -20,19 +19,18 @@ export interface HdsData {
   selector: 'app-table-home',
   templateUrl: './table-home.component.html',
   styleUrls: ['./table-home.component.css'],
-  providers: [MessageService]
 })
 export class TableHomeComponent implements OnInit {
 
   @Input() dataHds: any;
   modalRef: BsModalRef;
   selectedRowId: string;
+  
 
   constructor(
     private serviceHd: HdService,
     private modalService: BsModalService,
     private selectedRowService: SelectedRowService,
-    private messageService: MessageService,
     private modalServiceBootstrap: ModalService
   ) { }
 
@@ -58,19 +56,28 @@ export class TableHomeComponent implements OnInit {
     })
   }
 
-  messageSuccess() {
-    this.messageService.add({ severity: 'success', summary: 'Service Message', detail: 'Via MessageService' });
-  }
+  openConfirmDialog(): void {
+    const initialState = {
+      title: 'Confirmação',
+      message: 'Tem certeza que deseja excluir o item?'
+    };
+    const modalOptions = {
+      initialState,
+      backdrop: true,
+      keyboard: false
+    };
+    const modalRef: BsModalRef = this.modalService.show(ConfirmDialogComponent, modalOptions);
+    modalRef.content.confirm.subscribe(() => {
+      this.deleteHd();
+      modalRef.hide();
+    });
+    modalRef.content.decline.subscribe(() => {
+      // Lógica a ser executada ao cancelar
+      modalRef.hide();
+    });
+}
 
-  showConfirm() {
-    this.messageService.clear();
-    this.messageService.add({ key: 'c', sticky: true, severity: 'warn', summary: 'Are you sure?', detail: 'Confirm to proceed' });
-  }
-
-  onReject() {
-    this.messageService.clear('c');
-  }
-
+  // Abrirndo modal de edição
   openModal(tableRowData) {
     this.modalRef = this.modalService.show(ModalEditComponent);
     this.modalRef.content.dataHds = tableRowData;
@@ -94,7 +101,6 @@ export class TableHomeComponent implements OnInit {
   deleteHd() {
     const _id = this.selectedRowId;
     this.serviceHd.deleteHds(_id).subscribe((data: any) => {
-      this.onReject();
       this.selectedRowId = '';
       this.getHds();
     })

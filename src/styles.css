@@ -65,6 +65,10 @@ body .ui-selectbutton .ui-button {
   font-size: .8rem;
 }
 
+body .hand {
+  cursor: pointer;
+}
+
 /* SOBRESCREVENDO ALGUMAS CLASSES DO BOOTSTRAOP */
 .form-control {
   padding: 15px;

@@ -52,7 +52,7 @@
                 icon="pi pi-trash " 
                 styleClass="ui-button-danger"
                 tooltipPosition="top"
-                (click)="showConfirm()"
+                (click)="openConfirmDialog()"
                 pTooltip="{{ 'delete' | translate }}"
               ></p-button>
             </td>
@@ -61,23 +61,3 @@
     </p-table>
   </p-card>
 </div>
-
-<app-toast-dialog></app-toast-dialog>
-
-<p-toast position="center" key="c" (onClose)="onReject()" [modal]="true" [baseZIndex]="5000">
-  <ng-template pTemplate="message">
-      <div style="text-align: center">
-          <i class="pi pi-exclamation-triangle" style="font-size: 3em"></i>
-          <h3>teste</h3>
-          <p>kkkkkkkkkkkkk</p>
-      </div>
-      <div class="ui-g ui-fluid">
-          <div class="ui-g-6">
-              <button type="button" pButton (click)="deleteHd()" label="Yes" class="ui-button-success"></button>
-          </div>
-          <div class="ui-g-6">
-              <button type="button" pButton (click)="onReject()" label="No" class="ui-button-secondary"></button>
-          </div>
-      </div>
-  </ng-template>
-</p-toast>

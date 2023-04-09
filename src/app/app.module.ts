@@ -24,7 +24,6 @@ import { DropdownModule } from 'primeng/dropdown';
 import { CardModule } from 'primeng/card';
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
-import { ToastModule } from 'primeng/toast';
 import { SelectButtonModule } from 'primeng/selectbutton';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -38,7 +37,7 @@ import { MainscreenComponentComponent } from './components/mainscreen-component/
 import { FooterComponent } from './components/footer/footer.component';
 import { ModalEditComponent } from './components/modal-edit/modal-edit.component';
 import { CardComponent } from './components/card/card.component';
-import { ToastDialogComponent } from './components/toast-dialog/toast-dialog.component';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -55,7 +54,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MainscreenComponentComponent,
     FooterComponent,
     ModalEditComponent,
-    ToastDialogComponent,
+    ConfirmDialogComponent,
     CardComponent,
   ],
   imports: [
@@ -84,15 +83,15 @@ export function HttpLoaderFactory(http: HttpClient) {
     CardModule,
     MessagesModule,
     MessageModule,
-    ToastModule,
     SelectButtonModule,
     ConfirmDialogModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    MatInputModule
+    MatInputModule,
   ],
   entryComponents: [
-    ModalEditComponent
+    ModalEditComponent,
+    ConfirmDialogComponent
   ],
   providers: [
     HdService,
