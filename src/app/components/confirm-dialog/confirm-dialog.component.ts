@@ -6,8 +6,8 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./confirm-dialog.component.css']
 })
 export class ConfirmDialogComponent {
-  @Output() confirm: EventEmitter<void> = new EventEmitter<void>(); // Definindo um EventEmitter para o evento de confirmação
-  @Output() decline: EventEmitter<void> = new EventEmitter<void>(); // Definindo um EventEmitter para o evento de cancelamento
+  @Output() confirm: EventEmitter<void> = new EventEmitter<void>();
+  @Output() decline: EventEmitter<void> = new EventEmitter<void>();
 
   title: string;
   message: string;

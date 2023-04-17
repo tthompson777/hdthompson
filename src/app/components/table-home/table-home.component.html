@@ -12,6 +12,7 @@
     >
       <ng-template pTemplate="header" class="ui-table-thead-1">
           <tr>
+            <th>Nº</th>
             <th>Título</th>
             <th>Tipo</th>
             <th>Situação</th>
@@ -23,6 +24,7 @@
       </ng-template>
       <ng-template pTemplate="body" let-row>
           <tr (click)="handleSelectedRowId(row._id)">
+            <td>{{ row.hdNumber }}</td>
             <td>{{ row.hdTitle }}</td>
             <td translate>{{ row.hdType }}</td>
             <td translate>{{ row.hdStatus }}</td>
@@ -44,7 +46,7 @@
                 icon="pi pi-file-edit" 
                 styleClass="ui-button-success"
                 class="m-1"
-                (click)="openModal(row)"
+                (click)="openEditModal(row)"
                 tooltipPosition="top"
                 pTooltip="{{ 'edit' | translate }}"
               ></p-button>

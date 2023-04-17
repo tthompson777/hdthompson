@@ -72,13 +72,12 @@ export class TableHomeComponent implements OnInit {
       modalRef.hide();
     });
     modalRef.content.decline.subscribe(() => {
-      // Lógica a ser executada ao cancelar
       modalRef.hide();
     });
 }
 
   // Abrirndo modal de edição
-  openModal(tableRowData) {
+  openEditModal(tableRowData) {
     this.modalRef = this.modalService.show(ModalEditComponent);
     this.modalRef.content.dataHds = tableRowData;
     

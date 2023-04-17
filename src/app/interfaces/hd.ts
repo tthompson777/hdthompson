@@ -6,4 +6,5 @@ export default interface Hd {
   hdPriority?: string;
   hdCreateDate?: string;
   hdDescription?: string;
+  hdNumber: number;
 }

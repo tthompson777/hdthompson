@@ -11,7 +11,10 @@
 }
 
 body {
-  background-color: #edf5ff !important;
+  background: whitesmoke url('./assets/img/background.svg') !important;
+  background-color: #fff !important;
+  padding: 120px 0 150px;
+  position: relative;
 }
 
 .mat-form-field {
@@ -28,7 +31,7 @@ body {
 body .ui-card {
   background-color: #ffffff;
   color: #333333;
-  box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+  box-shadow: 1px 6px 38px -12px #c1c1c1;
 }
 
 /* PERSONALIZANDO TABERLAS */
